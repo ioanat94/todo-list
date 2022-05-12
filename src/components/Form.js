@@ -1,8 +1,25 @@
-function Form() {
+function Form(props) {
+    function inputTextHandler(event) {
+        props.setInputText(event.target.value);
+    }
+
+    function submitToDoHandler(event) {
+        event.preventDefault()
+        props.setToDos([
+            ...props.toDos,
+            {
+                id: Math.random() * 1000,
+                text: props.inputText, 
+                completed: false
+            }
+        ])
+        props.setInputText('')
+    }
+
     return (
         <form>
-            <input type='text' className='todo-input' />
-            <button className='todo-button' type='submit'>
+            <input value={props.inputText} onChange={inputTextHandler} type='text' className='todo-input' />
+            <button onClick={submitToDoHandler} className='todo-button' type='submit'>
                 <i className='fas fa-plus-square'></i>
             </button>
             <div className='select'>
