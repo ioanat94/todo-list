@@ -2,7 +2,7 @@ import Todo from './Todo';
 
 function Todolist(props) {
     const todos = props.toDos.map(toDo => (
-        <Todo key={toDo.id} inputText={toDo.text} />
+        <Todo key={toDo.id} inputText={toDo.text} toDos={props.toDos} setToDos={props.setToDos} toDo={toDo} />
     ))
 
     return (
