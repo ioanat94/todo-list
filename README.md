@@ -1,7 +1,7 @@
 # To-do List
 To-do list in React.  
 
-Live preview: coming soon
+Live preview: https://ioanat94.github.io/todo-list/
 
 How to run the project:  
 
