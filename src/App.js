@@ -9,7 +9,12 @@ function App() {
   const [filteredToDos, setFilteredToDos] = useState([])
 
   useEffect(() => {
+    getLocalToDos()
+  }, [])
+
+  useEffect(() => {
     filterHandler()
+    saveLocalToDos()
   }, [toDos, status])
 
   function filterHandler() {
@@ -23,6 +28,23 @@ function App() {
       default:
         setFilteredToDos(toDos)
         break
+    }
+  }
+
+  function saveLocalToDos() {
+    if(localStorage.getItem('toDos') === null) {
+      localStorage.setItem('toDos', JSON.stringify([]))
+    } else {
+      localStorage.setItem('toDos', JSON.stringify(toDos))
+    }
+  }
+
+  function getLocalToDos() {
+    if(localStorage.getItem('toDos') === null) {
+      localStorage.setItem('toDos', JSON.stringify([]))
+    } else {
+      let toDoFromLocal = JSON.parse(localStorage.getItem('toDos'))
+      setToDos(toDoFromLocal)
     }
   }
 
