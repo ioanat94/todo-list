@@ -1,7 +1,7 @@
 import Todo from './Todo';
 
 function Todolist(props) {
-    const todos = props.toDos.map(toDo => (
+    const todos = props.filteredToDos.map(toDo => (
         <Todo key={toDo.id} inputText={toDo.text} toDos={props.toDos} setToDos={props.setToDos} toDo={toDo} />
     ))
 
